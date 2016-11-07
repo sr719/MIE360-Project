@@ -1,0 +1,72 @@
+body{
+	background: url("http://wallpapercave.com/wp/6O89NI9.jpg") no-repeat center center fixed;
+	background-attachment: scroll;
+ 	 -webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+/*logo{
+	background: url("BFC.png");
+	background-attachment: scroll;
+ 	 -webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover
+}*/
+
+	
+
+.register{
+	display: inline;
+	position: absolute;
+	background-color: #14213D;
+	/*margin-top: 40px;
+	margin-left: 300px;*/
+  	color: #FFF;
+ 	font-family: 'Lucida Sans Unicode';
+ 	font-size: 26px;
+  	padding: 14px;
+  	background-image:-webkit-linear-gradient(black, red);
+  	left: 20%
+}
+.register:hover{
+	box-shadow: 0 12px 16px 0 rgba(100,0,0,1),0 17px 50px 0 rgba(100,0,0,1);
+}
+
+.login {
+	position: absolute;
+	background-color: #14213D;
+	/*margin-top: 40px;
+	margin-left: 800px;*/
+  	color: #FFF;
+ 	font-family: 'Lucida Sans Unicode';
+ 	font-size: 26px;
+  	padding: 14px;
+  	width: 103px;
+  	background-image:-webkit-linear-gradient(black, red);
+  	left: 70%;
+  	text-align: center;
+
+}
+.login:hover{
+	box-shadow: 0 12px 16px 0 rgba(100,0,0,1),0 17px 50px 0 rgba(100,0,0,1);
+}
+
+
+h1{
+	margin-top: 300px;
+	background: transparent;
+	color: white;
+	font-family: "Verdana";
+	text-align: center;
+	font-size: 70px;
+}
+
+h2{
+	font-size: 14px;
+	margin-top: 615px;
+	font-style: italic;
+	color: white;
+}
