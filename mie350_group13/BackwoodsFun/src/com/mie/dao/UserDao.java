@@ -119,24 +119,57 @@ public class UserDao {
 		return false;
 	}
 
-	public User getUserById(int userId) {
+	public boolean loginValidated(List<User> list, String uName, String pWord)
+	{
+		boolean email = false;
+		int email_ind = -1;
+		boolean password = false;
+		int pass_ind = -1;
+		
+		for(int i = 0; i < list.size(); i++){
+			if(list.get(i).getEmail() == uName){
+				email = true;
+				email_ind=i;
+			}
+			if(list.get(i).getPassword() == pWord){
+				password = true;
+				pass_ind=i;
+			}			
+		}
+		
+		if(!email || !password){
+			return false;
+		}
+		if(pass_ind != -1 && email_ind != -1 && email_ind == pass_ind){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public User getUserByEmail(String email) {
 		User user = new User();
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("select * from users where userid=?");
-			preparedStatement.setInt(1, userId);
+					.prepareStatement("select * from Player where email=?");
+			preparedStatement.setString(1, email);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			if (rs.next()) {
 				user.setFirstName(rs.getString("firstname"));
 				user.setLastName(rs.getString("lastname"));
-				user.setDob(rs.getDate("dob"));
+				user.setDob(rs.getDate("DOB"));
 				user.setEmail(rs.getString("email"));
+				user.setGender(rs.getString("gender"));
+				user.setPosition(rs.getString("position"));
+				user.setTeam(rs.getString("team"));
+				user.setisAdmin(rs.getBoolean("isAdmin"));
+				user.setAdminString();
+				user.setPassword(rs.getString("password"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return user;
 	}
 	

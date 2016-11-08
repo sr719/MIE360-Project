@@ -6,6 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="style/login.css" type="text/css" rel="stylesheet">
 <body>
+
+<script type="text/javascript">
+alert("The username and password do not match! Please Try again.");
+</script>
+
 <!-- multistep form -->
  <form id="msform" method="POST" action='LoginController' name="frmLogin">
     <!-- progressbar -->
