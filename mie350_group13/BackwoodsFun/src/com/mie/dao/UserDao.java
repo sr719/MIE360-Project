@@ -18,6 +18,16 @@ public class UserDao {
 	public UserDao() {
 		connection = DbUtil.getConnection();
 	}
+	
+	public String getTeamAdminEmail(List<User> list, String team){
+		for(int i = 0; i < list.size(); i++){
+			if(list.get(i).getTeam().equalsIgnoreCase(team) && list.get(i).getisAdmin())
+			{
+				return list.get(i).getEmail();
+			}
+		}
+		return "Admin not found!";
+	}
 
 	public void addUser(User user) {
 		try {
