@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.mie.dao.UserDao;
 import com.mie.model.User;
 
+//git hub tutorial
+
 public class LoginController extends HttpServlet{
 	
 	private UserDao dao;
