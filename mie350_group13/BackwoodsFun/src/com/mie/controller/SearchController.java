@@ -40,9 +40,9 @@ public class SearchController extends HttpServlet {
 			request.setAttribute("users", dao.getAllUsers());
 		} else if (action.equalsIgnoreCase("edit")) {
 			forward = INSERT_OR_EDIT;
-			int userId = Integer.parseInt(request.getParameter("userId"));
-			User user = dao.getUserById(userId);
-			request.setAttribute("user", user);
+			//int userId = Integer.parseInt(request.getParameter("userId"));
+			//User user = dao.getUserByEmail(userId);
+			//request.setAttribute("user", user);
 		} else if (action.equalsIgnoreCase("listUser")) {
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());

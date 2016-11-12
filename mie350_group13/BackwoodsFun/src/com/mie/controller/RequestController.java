@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,8 @@ import net.ucanaccess.jdbc.Session;
 public class RequestController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	private static String LIST_REQUEST = "/listRequest.jsp";
+	
 	private UserDao dao;
 	private RequestDao daoReq;
 	
@@ -31,8 +34,30 @@ public class RequestController extends HttpServlet {
 		daoReq = new RequestDao();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String forward = "";
+		String action = request.getParameter("action");
+		String reqID = request.getParameter("req");
+
+		if (action.equalsIgnoreCase("accept")) {
+			daoReq.acceptRequest(reqID);
+			forward = LIST_REQUEST;
+			request.setAttribute("requests", daoReq.getAllRequests());
+		} else if (action.equalsIgnoreCase("decline")) {
+			daoReq.declineRequest(reqID);
+			forward = LIST_REQUEST;
+			request.setAttribute("requests", daoReq.getAllRequests());
+		} else if (action.equalsIgnoreCase("listRequest")) {
+			forward = LIST_REQUEST;
+			request.setAttribute("requests", dao.getAllUsers());
+		} 
+		else {
+			forward = LIST_REQUEST;
+		}
+
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,7 +70,7 @@ public class RequestController extends HttpServlet {
 		req.setLocation(request.getParameter("location"));
 		try {
 			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request
-					.getParameter("dob"));
+					.getParameter("date"));
 			req.setDate(dob);
 		} catch (ParseException e) {
 			e.printStackTrace();

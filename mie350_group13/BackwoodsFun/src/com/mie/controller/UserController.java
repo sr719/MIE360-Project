@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mie.dao.UserDao;
 import com.mie.model.User;
@@ -19,6 +20,7 @@ public class UserController extends HttpServlet {
 	private static String INSERT_OR_EDIT = "/user.jsp";
 	private static String LIST_USER = "/listUser.jsp";
 	private static String SEARCH_FNAME_USER = "/searchFNUser.jsp";
+	private static String HOMEPAGE = "/homepage.jsp";
 	private UserDao dao;
 
 	public UserController() {
@@ -38,9 +40,9 @@ public class UserController extends HttpServlet {
 			request.setAttribute("users", dao.getAllUsers());
 		} else if (action.equalsIgnoreCase("edit")) {
 			forward = INSERT_OR_EDIT;
-			int userId = Integer.parseInt(request.getParameter("userId"));
-			User user = dao.getUserById(userId);
-			request.setAttribute("user", user);
+			//int userId = Integer.parseInt(request.getParameter("userId"));
+			//User user = dao.getUserById(userId);
+			//request.setAttribute("user", user);
 		} else if (action.equalsIgnoreCase("listUser")) {
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());
@@ -76,8 +78,9 @@ public class UserController extends HttpServlet {
 			//user.setUserid(Integer.parseInt(userid));
 			dao.updateUser(user);
 		}
-		RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-		request.setAttribute("users", dao.getAllUsers());
+		HttpSession session = request.getSession(true);	    
+        session.setAttribute("user",user);
+		RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
 		view.forward(request, response);
 	}
 }

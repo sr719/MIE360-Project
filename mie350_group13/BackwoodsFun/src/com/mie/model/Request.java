@@ -1,11 +1,10 @@
 package com.mie.model;
 
-import java.sql.Date;
-
 public class Request extends Game {
 
 	private String replyAdmin;
 	private String requestAdmin;
+	private String key;
 		
 	public Request(){
 		super();
@@ -19,11 +18,19 @@ public class Request extends Game {
 		this.requestAdmin = reqAdmin;
 	}
 	
+	public void setKey(String key){
+		this.key=key;
+	}
+	
 	public String getRepAdmin(){
 		return this.replyAdmin;
 	}
 	
 	public String getReqAdmin(){
 		return this.requestAdmin;
+	}
+	
+	public String getKey(){
+		return this.key;
 	}
 }

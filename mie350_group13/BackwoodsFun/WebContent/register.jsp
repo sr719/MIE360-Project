@@ -19,7 +19,7 @@
 		});
 	</script>
     
-    <form method="POST" action='UserController' name="frmAddUser" onsubmit="return checkInput();">
+    <form method="POST" action='UserController' name="frmAddUser">
     	<fieldset>
         	<h2 class="fs-title">Registration</h2>
         	<input type="text" name="fname" placeholder="First Name" pattern="^[a-zA-Z]{2,}$" title="Minimum two letters" />
@@ -42,52 +42,6 @@
         	<input type="submit" name="submit" class="submit action-button" value="Submit" />
     	</fieldset>
     </form>
-    
-    <script type="text/javascript">
-      function checkInput()
-      {
-		boolean valid = true;
-		string alertMessage = "";
-         if(document.forms["frmAddUser"]["fname"].value == ""|| document.forms["frmAddUser"]["fname"].value == null){
-            alertMessage = alertMessage + "-Please provide your first name!\n";
-            valid = false;
-         }
-         if(document.forms.lname.value == ""|| document.forms.lname.value == null){
-        	 alertMessage = alertMessage + "-Please provide your last name!\n";
-             valid = false;
-          }
-         if(document.forms.gender.value == "Choose"){
-        	 alertMessage = alertMessage + "-Please choose a gender!\n";
-             valid = false;
-          }
-         if(document.forms.pos.value == "Choose"){
-        	 alertMessage = alertMessage + "-Please choose a position!\n";
-             valid = false;
-          }
-         if(document.forms.email.value == ""|| document.forms.email.value == null){
-        	 alertMessage = alertMessage + "-Please provide your email!\n";
-             valid = false;
-          }
-         if(document.forms.pass.value != document.forms.cpass.value){
-        	 alertMessage = alertMessage + "-Make sure your password entries match!\n";
-             valid = false;
-          }
-         if((document.forms.pass.value == ""|| document.forms.pass.value == null)
-        		 || (document.forms.cpass.value == ""|| document.forms.cpass.value == null)){
-        	 alertMessage = alertMessage + "-Make sure you enter a password AND a confirmation!\n";
-             valid = false;
-          }
-         if(valid){
-        	 return valid;
-          }
-         else{
-        	 alert(alertMessage);
-        	 return valid;
-         }
-      }
-
-	</script>
-    
 </div>
 
 </body>

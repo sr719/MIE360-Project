@@ -34,6 +34,7 @@ public class RequestDao {
 				request.setTime(rs.getString("game_Time"));
 				request.setRepAdmin(rs.getString("reply_Admin"));
 				request.setReqAdmin(rs.getString("request_Admin"));
+				request.setKey(rs.getDate("game_Date") + "*" + rs.getString("request_Admin") );
 				requests.add(request);
 			}
 		} catch (SQLException e) {
@@ -59,6 +60,42 @@ public class RequestDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void declineRequest(String reqID) {
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete from Requests where game_Date=? and request_Admin=?");
+			// Parameters start with 1
+			String[] parts = reqID.split("*");
+			String date = parts[0];
+			String admin = parts[1];
+			
+			preparedStatement.setString(1, date);
+			preparedStatement.setString(2, admin);
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void acceptRequest(String reqID) {
+			List<Request> requests = getAllRequests();
+			Request accepted = new Request();
+			for(int i =0; i < requests.size(); i++)
+			{
+				if(requests.get(i).getKey() == reqID){
+					accepted = requests.get(i);
+					break;
+				}
+			}
+			
+			//PASS REQUEST OBJECT INTO SCHEDULE CLASS TO ADD IT TO THE SCHEDULE
+			//FUNCTION/CLASS NOT YET  CREATED
+			
+			declineRequest(reqID);
 	}
 	
 }
