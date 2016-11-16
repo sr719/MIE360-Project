@@ -14,6 +14,7 @@ import com.mie.dao.UserDao;
 import com.mie.model.User;
 
 //git hub tutorial
+//test 2
 
 public class LoginController extends HttpServlet{
 	
