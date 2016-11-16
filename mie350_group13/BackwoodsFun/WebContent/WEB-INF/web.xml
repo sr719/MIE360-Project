@@ -44,4 +44,14 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StandingsController</display-name>
+    <servlet-name>StandingsController</servlet-name>
+    <servlet-class>com.mie.controller.StandingsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StandingsController</servlet-name>
+    <url-pattern>/StandingsController</url-pattern>
+  </servlet-mapping>
 </web-app>
