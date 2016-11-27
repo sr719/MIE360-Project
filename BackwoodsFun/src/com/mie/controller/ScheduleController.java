@@ -48,6 +48,7 @@ public class ScheduleController extends HttpServlet {
 		if (action.equalsIgnoreCase("fullSchedule")) {// RETURN HERE
 			
 			forward = FULL_SCHEDULE;
+			request.setAttribute("length", daoSchedule.getAllSchedules().size());
 			request.setAttribute("schedules", daoSchedule.getAllSchedules());
 			
 		} else if (action.equalsIgnoreCase("listSchedule"))

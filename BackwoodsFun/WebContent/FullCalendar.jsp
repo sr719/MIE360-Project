@@ -16,7 +16,12 @@
 
 	$(document).ready(function() {
 		var initialLocaleCode = 'en';
+		var events = [];
 		
+		for( i=0; i<"${length}"; i++){
+			events.push({title:"${schedules.get(i).getGame() }", start: '2016-11-01' })
+		}
+		events.push({title:'test',start:'2016-11-02'})
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
@@ -31,7 +36,11 @@
 			editable: true,
 			
 			
-			events: [
+			events: events
+			
+			/* [
+				
+				
 				{
 					title:"${schedules.get(0).getHome() }" ,
 					start: '2016-09-01'
@@ -87,7 +96,8 @@
 					url: 'http://google.com/',
 					start: '2016-09-28'
 				}
-			]
+			
+			]*/
 		});
 
 		// build the locale selector's options
