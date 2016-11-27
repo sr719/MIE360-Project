@@ -25,7 +25,7 @@ public class ScheduleController extends HttpServlet {
 	private static String FULL_SCHEDULE = "fullcalendar-3.0.1/demos/default.html";
 	private static String CURRENT_SCHEDULE = "/LeagueSchedule.jsp";
 	private static String CURRENT_SCHEDULE_ADMIN = "/AdminSchedule.jsp";
-	//I FUCKED UP GIT TEST
+	
 
 	private static final long serialVersionUID = 1L;
     private ScheduleDao daoSchedule;   
