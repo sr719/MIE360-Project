@@ -19,7 +19,7 @@ import com.mie.model.User;
 public class LoginController extends HttpServlet{
 	
 	private UserDao dao;
-	
+	private static String HOMEPAGE = "/homepage.jsp";
 	public LoginController() {
 		super();
 		dao = new UserDao();
@@ -33,15 +33,19 @@ public class LoginController extends HttpServlet{
         PrintWriter out = response.getWriter();
         String user = request.getParameter("email");
         String pass = request.getParameter("pass");
+       // DEBUG  System.out.println(user+pass);
 		
 		if(dao.loginValidated(dao.getAllUsers(), user, pass)){
 			HttpSession session = request.getSession(true);	    
-	        session.setAttribute(user,dao.getUserByEmail(user)); 
+	        session.setAttribute("user",dao.getUserByEmail(user)); 
 	        //response.sendRedirect("INSERT HOMEPAGE NAME.jsp"); //user homepage
 		}
 		else{
 			response.sendRedirect("invalidLogin.jsp"); //retry login!
 		}
+		RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
+		request.setAttribute("users", dao.getAllUsers());
+		view.forward(request, response);
 	}
 
 }

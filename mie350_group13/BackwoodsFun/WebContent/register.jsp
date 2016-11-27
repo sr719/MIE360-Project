@@ -46,7 +46,7 @@
 
         	function validatePassword(){
         	  var pass1 = document.getElementById("pass").value;
-          	  var pass2 = document.getElementById("cpass".value);
+          	  var pass2 = document.getElementById("cpass").value;
         	  if(pass1 != pass2) {
         	    document.getElementById("pass").style.borderColor = "#E34234";
         	    document.getElementById("cpass").style.borderColor = "#E34234";	  

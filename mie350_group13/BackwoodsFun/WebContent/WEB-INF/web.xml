@@ -54,4 +54,14 @@
     <servlet-name>TeamController</servlet-name>
     <url-pattern>/TeamController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ScheduleController</display-name>
+    <servlet-name>ScheduleController</servlet-name>
+    <servlet-class>com.mie.controller.ScheduleController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScheduleController</servlet-name>
+    <url-pattern>/ScheduleController</url-pattern>
+  </servlet-mapping>
 </web-app>
