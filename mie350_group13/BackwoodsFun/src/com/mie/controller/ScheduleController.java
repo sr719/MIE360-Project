@@ -24,6 +24,8 @@ public class ScheduleController extends HttpServlet {
 
 	private static String FULL_SCHEDULE = "fullcalendar-3.0.1/demos/default.html";
 	private static String CURRENT_SCHEDULE = "/LeagueSchedule.jsp";
+	private static String CURRENT_SCHEDULE_ADMIN = "/AdminSchedule.jsp";
+
 	private static final long serialVersionUID = 1L;
     private ScheduleDao daoSchedule;   
     /**
@@ -48,9 +50,15 @@ public class ScheduleController extends HttpServlet {
 			request.setAttribute("games", daoSchedule.getAllSchedules());
 		} else if (action.equalsIgnoreCase("listSchedule"))
 		{
-			forward = CURRENT_SCHEDULE;
+			
 			HttpSession session = request.getSession(false);
 			User user = (User) session.getAttribute("user");
+			if(user.getisAdmin())
+				forward=CURRENT_SCHEDULE_ADMIN;
+			else
+				forward = CURRENT_SCHEDULE;
+
+					
 			//System.out.println( user.getFirstName() +user.getLastName());
 			List<Schedule> mySchedule = new ArrayList<Schedule>();
 			mySchedule = daoSchedule.getMySchedule(user.getTeam());
