@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<link href='../fullcalendar.css' rel='stylesheet' />
-<link href='../fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='../lib/moment.min.js'></script>
-<script src='../lib/jquery.min.js'></script>
-<script src='../fullcalendar.min.js'></script>
+<link href='style/fullcalendar.css' rel='stylesheet' />
+<link href='style/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='Calendar JS/lib/moment.min.js'></script>
+<script src='Calendar JS/lib/jquery.min.js'></script>
+<script src='Calendar JS/fullcalendar.min.js'></script>
 <script>
 
 	$(document).ready(function() {
