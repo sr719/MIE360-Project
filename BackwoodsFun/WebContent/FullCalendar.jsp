@@ -8,36 +8,34 @@
 <meta charset='utf-8' />
 <link href='style/fullcalendar.css' rel='stylesheet' />
 <link href='style/fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='Calendar JS/lib/moment.min.js'></script>
-<script src='Calendar JS/lib/jquery.min.js'></script>
+<script src='Calendar JS/moment.min.js'></script>
+<script src='Calendar JS/jquery.min.js'></script>
 <script src='Calendar JS/fullcalendar.min.js'></script>
+<script src='Calendar JS/locale-all.js'></script>
 <script>
 
 	$(document).ready(function() {
+		var initialLocaleCode = 'en';
 		
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'listDay,listWeek,month'
+				right: 'month,agendaWeek,agendaDay,listMonth'
 			},
-
-			// customize the button names,
-			// otherwise they'd all just say "list"
-			views: {
-				listDay: { buttonText: 'list day' },
-				listWeek: { buttonText: 'list week' }
-			},
-
-			defaultView: 'listMonth',
-			defaultDate: '2016-09-12',
+			//defaultDate: '2016-09-12',
+			locale: initialLocaleCode,
+			buttonIcons: false, // show the prev/next text
+			weekNumbers: true,
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
-			eventLimit: true, // allow "more" link when too many events
+			
+			
 			events: [
 				{
-					title: 'All Day Event',
+					title:"${schedules.get(0).getHome() }" ,
 					start: '2016-09-01'
+					
 				},
 				{
 					title: 'Long Event',
@@ -91,28 +89,54 @@
 				}
 			]
 		});
-		
+
+		// build the locale selector's options
+		$.each($.fullCalendar.locales, function(localeCode) {
+			$('#locale-selector').append(
+				$('<option/>')
+					.attr('value', localeCode)
+					.prop('selected', localeCode == initialLocaleCode)
+					.text(localeCode)
+			);
+		});
+
+		// when the selected option changes, dynamically change the calendar option
+		$('#locale-selector').on('change', function() {
+			if (this.value) {
+				$('#calendar').fullCalendar('option', 'locale', this.value);
+			}
+		});
 	});
 
 </script>
 <style>
 
 	body {
-		margin: 40px 10px;
+		margin: 0;
 		padding: 0;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 		font-size: 14px;
 	}
 
+	#top {
+		background: #eee;
+		border-bottom: 1px solid #ddd;
+		padding: 0 10px;
+		line-height: 40px;
+		font-size: 12px;
+	}
+
 	#calendar {
 		max-width: 900px;
-		margin: 0 auto;
+		margin: 40px auto;
+		padding: 0 10px;
 	}
 
 </style>
 </head>
 <body>
 
+	
 	<div id='calendar'></div>
 
 </body>
