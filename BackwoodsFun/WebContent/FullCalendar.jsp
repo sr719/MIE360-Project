@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,7 +23,7 @@ $(function(){
 			window.alert(j);
 		}*/
 		<c:forEach items="${schedules}" var="sch">
-		events.push({title:"${sch.getGame() }", start: "${sch.getGame_Date().toString()}" })
+		events.push({title:"${sch.getGame() }", start: "${sch.getGameDateTime()}" })
 		</c:forEach>
 		events.push({title:'test',start:'2016-11-02'})
 		$('#calendar').fullCalendar({
@@ -37,7 +37,7 @@ $(function(){
 			buttonIcons: false, // show the prev/next text
 			weekNumbers: true,
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
+			editable: false,
 			
 			
 			events: events

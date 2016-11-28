@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet{
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+      //  PrintWriter out = response.getWriter();
         String user = request.getParameter("email");
         String pass = request.getParameter("pass");
        // DEBUG  System.out.println(user+pass);
