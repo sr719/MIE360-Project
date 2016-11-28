@@ -1,35 +1,50 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset='utf-8' />
-<link href='../fullcalendar.css' rel='stylesheet' />
-<link href='../fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='../lib/moment.min.js'></script>
-<script src='../lib/jquery.min.js'></script>
-<script src='../fullcalendar.min.js'></script>
-<script src='../locale-all.js'></script>
+<link href='style/fullcalendar.css' rel='stylesheet' />
+<link href='style/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='Calendar JS/moment.min.js'></script>
+<script src='Calendar JS/jquery.min.js'></script>
+<script src='Calendar JS/fullcalendar.min.js'></script>
+<script src='Calendar JS/locale-all.js'></script>
 <script>
 
 	$(document).ready(function() {
 		var initialLocaleCode = 'en';
-
+		var events = [];
+		
+		for( i=0; i<"${length}"; i++){
+			events.push({title:"${schedules.get(i).getGame() }", start: '2016-11-01' })
+		}
+		events.push({title:'test',start:'2016-11-02'})
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay,listMonth'
 			},
-			defaultDate: '2016-09-12',
+			//defaultDate: '2016-09-12',
 			locale: initialLocaleCode,
 			buttonIcons: false, // show the prev/next text
 			weekNumbers: true,
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
-			eventLimit: true, // allow "more" link when too many events
-			events: [
+			
+			
+			events: events
+			
+			/* [
+				
+				
 				{
-					title: 'All Day Event',
+					title:"${schedules.get(0).getHome() }" ,
 					start: '2016-09-01'
+					
 				},
 				{
 					title: 'Long Event',
@@ -81,7 +96,8 @@
 					url: 'http://google.com/',
 					start: '2016-09-28'
 				}
-			]
+			
+			]*/
 		});
 
 		// build the locale selector's options
@@ -130,13 +146,7 @@
 </head>
 <body>
 
-	<div id='top'>
-
-		Locales:
-		<select id='locale-selector'></select>
-
-	</div>
-
+	
 	<div id='calendar'></div>
 
 </body>

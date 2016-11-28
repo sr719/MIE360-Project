@@ -10,6 +10,7 @@ private String Location;
 private Date game_Date;
 private Time game_time;
 private String result;
+private String Game;
 public String getHome() {
 	return Home;
 }
@@ -45,6 +46,12 @@ public String getResult() {
 }
 public void setResult(String result) {
 	this.result = result;
+}
+public String getGame(){
+	return Game;
+}
+public void setGame(){
+	Game= Home +" @ " + Away;
 }
 }
 

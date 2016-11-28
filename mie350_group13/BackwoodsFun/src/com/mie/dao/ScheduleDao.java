@@ -76,6 +76,7 @@ public class ScheduleDao {
 				schedule.setGame_Date(rs.getDate("game_Date"));
 				schedule.setGame_time(rs.getTime("game_Time"));
 				schedule.setResult(rs.getString("Result"));
+				schedule.setGame();
 				schedules.add(schedule);
 			}
 		} catch (SQLException e) {
@@ -104,6 +105,7 @@ public class ScheduleDao {
 				schedule.setGame_Date(rs.getDate("game_Date"));
 				schedule.setGame_time(rs.getTime("game_Time"));
 				schedule.setResult(rs.getString("Result"));
+				schedule.setGame();
 				result.add(schedule);
 				
 				}		
