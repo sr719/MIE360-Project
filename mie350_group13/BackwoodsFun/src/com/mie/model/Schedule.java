@@ -30,13 +30,19 @@ public void setLocation(String location) {
 	Location = location;
 }
 public Date getGame_Date() {
+	
 	return game_Date;
 }
 public void setGame_Date(Date game_Date) {
 	this.game_Date = game_Date;
+	
+
 }
 public Time getGame_time() {
+	
 	return game_time;
+	
+
 }
 public void setGame_time(Time game_time) {
 	this.game_time = game_time;
@@ -53,6 +59,11 @@ public String getGame(){
 public void setGame(){
 	Game= Home +" @ " + Away;
 }
+public String getGameDateTime(){
+	String date=game_Date.toString();
+	String time=game_time.toString();
+	return(date+"T"+time);
+	}
 }
 
 
