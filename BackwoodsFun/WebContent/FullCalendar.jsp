@@ -13,14 +13,18 @@
 <script src='Calendar JS/fullcalendar.min.js'></script>
 <script src='Calendar JS/locale-all.js'></script>
 <script>
+$(function(){
 
 	$(document).ready(function() {
 		var initialLocaleCode = 'en';
 		var events = [];
 		
-		for( i=0; i<"${length}"; i++){
-			events.push({title:"${schedules.get(i).getGame() }", start: '2016-11-01' })
-		}
+		/*for(j =0;j<3;j++){
+			window.alert(j);
+		}*/
+		<c:forEach items="${schedules}" var="sch">
+		events.push({title:"${sch.getGame() }", start: "${sch.getGame_Date().toString()}" })
+		</c:forEach>
 		events.push({title:'test',start:'2016-11-02'})
 		$('#calendar').fullCalendar({
 			header: {
@@ -117,7 +121,7 @@
 			}
 		});
 	});
-
+});
 </script>
 <style>
 

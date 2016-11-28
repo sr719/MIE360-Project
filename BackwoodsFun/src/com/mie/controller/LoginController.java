@@ -42,6 +42,7 @@ public class LoginController extends HttpServlet{
 		}
 		else{
 			response.sendRedirect("invalidLogin.jsp"); //retry login!
+			return;
 		}
 		RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
 		request.setAttribute("users", dao.getAllUsers());

@@ -50,6 +50,8 @@ public class ScheduleController extends HttpServlet {
 			forward = FULL_SCHEDULE;
 			request.setAttribute("length", daoSchedule.getAllSchedules().size());
 			request.setAttribute("schedules", daoSchedule.getAllSchedules());
+			System.out.println(daoSchedule.getAllSchedules().get(0).getGame());  
+			System.out.println(daoSchedule.getAllSchedules().get(1).getGame());
 			
 		} else if (action.equalsIgnoreCase("listSchedule"))
 		{
