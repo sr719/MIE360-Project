@@ -2,16 +2,21 @@
 	%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset='utf-8' />
 <link href='style/fullcalendar.css' rel='stylesheet' />
 <link href='style/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href = "style/homepage.css" type = "text/css" rel = "stylesheet">
+
 <script src='Calendar JS/moment.min.js'></script>
 <script src='Calendar JS/jquery.min.js'></script>
 <script src='Calendar JS/fullcalendar.min.js'></script>
 <script src='Calendar JS/locale-all.js'></script>
+
 <script>
 $(function(){
 
@@ -25,11 +30,11 @@ $(function(){
 		<c:forEach items="${schedules}" var="sch">
 		events.push({title:"${sch.getGame() }", start: "${sch.getGameDateTime()}" })
 		</c:forEach>
-		events.push({title:'test',start:'2016-11-02'})
+
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
-				center: 'title',
+				center: 'title' ,
 				right: 'month,agendaWeek,agendaDay,listMonth'
 			},
 			//defaultDate: '2016-09-12',
@@ -145,6 +150,7 @@ $(function(){
 		margin: 40px auto;
 		padding: 0 10px;
 	}
+	
 
 </style>
 </head>
