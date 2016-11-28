@@ -17,6 +17,7 @@ public class DbUtil {
 			return connection;
 		else {
 			try {
+				//test
 				Properties prop = new Properties();
 				InputStream inputStream = DbUtil.class.getClassLoader()
 						.getResourceAsStream("/db.properties");
