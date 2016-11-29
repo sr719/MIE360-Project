@@ -5,8 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset='utf-8' />
 <link href='style/fullcalendar.css' rel='stylesheet' />
+<link href='style/homepage.css' rel='stylesheet' />
 <link href='style/fullcalendar.print.css' rel='stylesheet' media='print' />
 <script src='Calendar JS/moment.min.js'></script>
 <script src='Calendar JS/jquery.min.js'></script>
