@@ -12,7 +12,7 @@
   		<ul>
   			<li><a href = "createTeam.jsp" class="createteam" style="text-decoration: none"><span>Create a team</span> </a></li>
 			<li><a href = "JoinATeam.html" class = "jointeam" style = "text-decoration: none"><span> Join a team</span> </a></li>
-			<li><a href = "LeagueSchedule.html" class = "schedule" style = "text-decoration: none"><span> League schedule</span> </a></li>
+			<li><a href = "/BackwoodsFun/ScheduleController?action=listSchedule" class = "schedule" style = "text-decoration: none"><span> League schedule</span> </a></li>
 			<li><a href = "Standings.html" class = "standing" style = "text-decoration: none"><span> Standings</span> </a></li>
 			<li><a href = "/BackwoodsFun/TeamController?action=listTeam" class = "team" style = "text-decoration: none"><span> View my team</span> </a></li>
 		</ul>

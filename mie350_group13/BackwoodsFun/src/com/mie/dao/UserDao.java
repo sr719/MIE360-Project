@@ -135,11 +135,11 @@ public class UserDao {
 		int pass_ind = -1;
 		
 		for(int i = 0; i < list.size(); i++){
-			if(list.get(i).getEmail() == uName){
+			if((list.get(i).getEmail()).equals(uName)){
 				email = true;
 				email_ind=i;
 			}
-			if(list.get(i).getPassword() == pWord){
+			if((list.get(i).getPassword()).equals(pWord)){
 				password = true;
 				pass_ind=i;
 			}			
