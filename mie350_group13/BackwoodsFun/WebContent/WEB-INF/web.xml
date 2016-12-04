@@ -55,8 +55,6 @@
     <url-pattern>/TeamController</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-<<<<<<< HEAD
     <display-name>ScheduleController</display-name>
     <servlet-name>ScheduleController</servlet-name>
     <servlet-class>com.mie.controller.ScheduleController</servlet-class>
@@ -64,7 +62,9 @@
   <servlet-mapping>
     <servlet-name>ScheduleController</servlet-name>
     <url-pattern>/ScheduleController</url-pattern>
-=======
+  </servlet-mapping>
+ 
+  <servlet>
     <display-name>StandingsController</display-name>
     <servlet-name>StandingsController</servlet-name>
     <servlet-class>com.mie.controller.StandingsController</servlet-class>
@@ -72,6 +72,6 @@
   <servlet-mapping>
     <servlet-name>StandingsController</servlet-name>
     <url-pattern>/StandingsController</url-pattern>
->>>>>>> master
+
   </servlet-mapping>
 </web-app>
