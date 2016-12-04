@@ -2,6 +2,7 @@
     <wb-module deploy-name="BackwoodsFun">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
         <property name="java-output-path" value="/BackwoodsFun/build/classes"/>
         <property name="context-root" value="BackwoodsFun"/>
     </wb-module>
