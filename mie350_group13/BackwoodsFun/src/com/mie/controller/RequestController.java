@@ -24,7 +24,8 @@ public class RequestController extends HttpServlet {
 	//hi
 	private static final long serialVersionUID = 1L;
 	private static String LIST_REQUEST = "/listRequest.jsp";
-	
+	private static String HOMEPAGE = "/homepage.jsp";
+	String forward="";
 	private UserDao dao;
 	private RequestDao daoReq;
 	
@@ -80,7 +81,9 @@ public class RequestController extends HttpServlet {
 		req.setRepAdmin(dao.getTeamAdminEmail(dao.getAllUsers(), request.getParameter("away")));
 		
 		daoReq.addRequest(req);
-		
+		forward=HOMEPAGE;
+		RequestDispatcher view = request.getRequestDispatcher(forward);
+		view.forward(request, response);
 		//INSERT PAGE DIRECTORY TO GO BACK AND ADD ANOTHER REQUEST
 	}
 
