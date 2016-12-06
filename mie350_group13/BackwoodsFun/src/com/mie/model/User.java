@@ -1,6 +1,10 @@
 package com.mie.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.mie.dao.TeamDao;
 
 public class User {
 	private String firstName;
@@ -96,4 +100,5 @@ public class User {
 				+ email + ", gender=" + gender + ", position=" + position 
 				+ ", password=" + password + ", team=" + team + ", Admin Status=" + isAdmin +"]";
 	}
+
 }

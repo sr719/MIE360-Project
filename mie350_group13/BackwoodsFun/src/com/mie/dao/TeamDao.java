@@ -2,9 +2,12 @@ package com.mie.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.mie.model.Schedule;
 import com.mie.model.Team;
 import com.mie.model.User;
 import com.mie.util.DbUtil;
@@ -57,6 +60,33 @@ public class TeamDao {
 		}
 		
 		return newList;
+	}
+
+	public List<Team> getOtherTeams(String team, User user) {
+		// TODO Auto-generated method stub
+		List<Team> result = new ArrayList<Team>();
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from Team where not(team_Name=?)");
+			
+			preparedStatement.setString(1, team);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				Team otherTeam= new Team();
+				otherTeam.setName(rs.getString("team_Name"));
+				otherTeam.setNumPlayers(rs.getInt("number_players"));
+				
+				result.add(otherTeam);
+				
+				}		
+			}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 	
 	

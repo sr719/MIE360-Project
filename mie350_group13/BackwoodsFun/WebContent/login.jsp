@@ -12,8 +12,8 @@
     <!-- fieldsets -->
     <fieldset>
         <h2 class="fs-title">Login</h2>
-        <input type="text" name="email" placeholder="Email" />
-        <input type="password" name="pass" placeholder="Password" />
+        <input type="text" name="email" placeholder="Email" required />
+        <input type="password" name="pass" placeholder="Password" required />
         <input type="submit" name="submit" class="submit action-button" value="Submit" />
     </fieldset>
 </form>

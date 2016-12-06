@@ -13,7 +13,7 @@
     <form method="POST" action='TeamController' name="frmAddTeam">
     <fieldset>
         <h2 class="fs-title">Team Info</h2>
-        <input type="text" name="tname" placeholder="Team Name" />
+        <input type="text" name="tname" placeholder="Team Name" required />
         <input type="submit" name="submit" class="submit action-button" value="Submit"/>
  
     </fieldset>

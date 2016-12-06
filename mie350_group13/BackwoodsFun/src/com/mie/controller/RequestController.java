@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mie.dao.RequestDao;
+import com.mie.dao.TeamDao;
 import com.mie.dao.UserDao;
 import com.mie.model.Request;
+import com.mie.model.Team;
 import com.mie.model.User;
 
 import net.ucanaccess.jdbc.Session;
@@ -67,6 +69,9 @@ public class RequestController extends HttpServlet {
 		Request req = new Request();
 		
 		req.setHome(user.getTeam());
+		TeamDao teamDao=new TeamDao();
+		request.setAttribute("otherTeams", teamDao.getOtherTeams(user.getTeam(),user));
+		
 		req.setAway(request.getParameter("away"));
 		req.setLocation(request.getParameter("location"));
 		try {
