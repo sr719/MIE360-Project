@@ -48,7 +48,7 @@
     <td align='center'><form><input type=submit value="join"></form></td>
   </tr> -->
 </table>
-  <a rel="import" href="/BackwoodsFun/ScheduleController?action=fullSchedule"> Add Game<a/>
+  <a rel="import" href="addGame.jsp"> Add Game<a/>
 
 </body>
 

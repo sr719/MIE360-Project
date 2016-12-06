@@ -85,6 +85,15 @@ public class ScheduleController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String forward = "";
+		String action = request.getParameter("action");
+		if(action.equalsIgnoreCase("updateResult")){
+			
+		}
+		else if(action.equalsIgnoreCase("addGame")){
+			
+			
+		}
 	}
 
 }
