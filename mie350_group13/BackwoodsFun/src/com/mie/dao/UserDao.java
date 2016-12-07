@@ -24,6 +24,8 @@ public class UserDao {
 			//TEAM CLASS NEEDS TO BE IMPLEMENTED TO HAVE THIS FUNCTIONS WORK
 			//THIS FUNCTION IS USED TO OBTAIN THE ADMIN EMAIL OF A TEAM ADMIN BASED ON THE
 			//TEAM THAT IS PASSED INTO THE FUNCTION
+			
+			// WATCH OUT GET TEAM SHOULD NOT BE EMPTY
 			if(list.get(i).getTeam().equalsIgnoreCase(team) && list.get(i).getisAdmin())
 			{
 				return list.get(i).getEmail();

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -70,7 +71,9 @@ public class RequestController extends HttpServlet {
 		
 		req.setHome(user.getTeam());
 		TeamDao teamDao=new TeamDao();
-		request.setAttribute("otherTeams", teamDao.getOtherTeams(user.getTeam(),user));
+		List<Team> otherTeams= teamDao.getOtherTeams(user.getTeam(),user);
+		
+		request.setAttribute("otherTeams", otherTeams);
 		
 		req.setAway(request.getParameter("away"));
 		req.setLocation(request.getParameter("location"));

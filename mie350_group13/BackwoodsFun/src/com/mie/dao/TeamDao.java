@@ -67,9 +67,8 @@ public class TeamDao {
 		List<Team> result = new ArrayList<Team>();
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("select * from Team where not(team_Name=?)");
+					.prepareStatement("select * from Team");
 			
-			preparedStatement.setString(1, team);
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -77,10 +76,14 @@ public class TeamDao {
 				Team otherTeam= new Team();
 				otherTeam.setName(rs.getString("team_Name"));
 				otherTeam.setNumPlayers(rs.getInt("number_players"));
-				
+				//System.out.println(otherTeam.getName());
 				result.add(otherTeam);
 				
-				}		
+				}
+			for (int i=0;i<result.size();i++){
+				if (result.get(i).getName().equals(user.getTeam()))
+					result.remove(i);
+			}
 			}
 		catch (SQLException e) {
 			e.printStackTrace();

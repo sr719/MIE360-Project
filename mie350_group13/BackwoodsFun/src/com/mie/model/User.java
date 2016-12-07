@@ -14,7 +14,7 @@ public class User {
 	private String gender;
 	private String position;
 	private String password;
-	private String team=null;
+	private String team=" "; // THIS SHOULD NEVER BE NULL
 	private boolean isAdmin=false;
 	private String adminString;
 
