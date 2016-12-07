@@ -34,7 +34,7 @@ public class RequestDao {
 				request.setTime(rs.getString("game_Time"));
 				request.setRepAdmin(rs.getString("reply_Admin"));
 				request.setReqAdmin(rs.getString("request_Admin"));
-				request.setKey(rs.getDate("game_Date") + "*" + rs.getString("request_Admin") );
+				request.setId(rs.getInt("ReqID"));
 				requests.add(request);
 			}
 		} catch (SQLException e) {
@@ -46,7 +46,7 @@ public class RequestDao {
 	
 	public void addRequest(Request req) {
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("insert into Requests(Home,Away,Location,game_Date,game_Time,reply_Admin,request_Admin) values (?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement preparedStatement = connection.prepareStatement("insert into Requests(Home,Away,Location,game_Date,game_Time,reply_Admin,request_Admin) values ( ?,?, ?, ?, ?, ?, ?)");
 			// Parameters start with 1
 			preparedStatement.setString(1, req.getHome());
 			preparedStatement.setString(2, req.getAway());
@@ -55,6 +55,8 @@ public class RequestDao {
 			preparedStatement.setString(5, req.getTime());
 			preparedStatement.setString(6, req.getRepAdmin());
 			preparedStatement.setString(7, req.getReqAdmin());
+			
+
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -62,17 +64,14 @@ public class RequestDao {
 		}
 	}
 
-	public void declineRequest(String reqID) {
+	public void declineRequest(int reqID) {
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("delete from Requests where game_Date=? and request_Admin=?");
+					.prepareStatement("delete from Requests where ReqID=?");
 			// Parameters start with 1
-			String[] parts = reqID.split("*");
-			String date = parts[0];
-			String admin = parts[1];
 			
-			preparedStatement.setString(1, date);
-			preparedStatement.setString(2, admin);
+			
+			preparedStatement.setInt(2, reqID);
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -81,12 +80,12 @@ public class RequestDao {
 		
 	}
 
-	public void acceptRequest(String reqID) {
+	public void acceptRequest(int reqID) {
 			List<Request> requests = getAllRequests();
 			Request accepted = new Request();
 			for(int i =0; i < requests.size(); i++)
 			{
-				if(requests.get(i).getKey() == reqID){
+				if(requests.get(i).getId() == reqID){
 					accepted = requests.get(i);
 					break;
 				}

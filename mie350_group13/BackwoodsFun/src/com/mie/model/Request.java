@@ -5,6 +5,7 @@ public class Request extends Game {
 	private String replyAdmin;
 	private String requestAdmin;
 	private String key;
+	private int id;
 		
 	public Request(){
 		super();
@@ -32,5 +33,13 @@ public class Request extends Game {
 	
 	public String getKey(){
 		return this.key;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

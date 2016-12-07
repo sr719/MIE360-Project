@@ -47,13 +47,14 @@ public class RequestController extends HttpServlet {
 		//if statement below needed to get into else;
 		if(action==null)
 			action="";
-		String reqID = request.getParameter("req");
 
 		if (action.equalsIgnoreCase("accept")) {
+			int reqID = Integer.parseInt(request.getParameter("req"));
 			daoReq.acceptRequest(reqID);
 			forward = LIST_REQUEST;
 			request.setAttribute("requests", daoReq.getAllRequests());
 		} else if (action.equalsIgnoreCase("decline")) {
+			int reqID = Integer.parseInt(request.getParameter("req"));
 			daoReq.declineRequest(reqID);
 			forward = LIST_REQUEST;
 			request.setAttribute("requests", daoReq.getAllRequests());
@@ -99,7 +100,11 @@ public class RequestController extends HttpServlet {
 		req.setHome(user.getTeam());
 				
 		req.setAway(request.getParameter("away"));
-		req.setLocation(request.getParameter("location"));
+		String location=request.getParameter("location");
+
+		for(int i=location.length();i<30;i++)
+			location+=" ";
+		req.setLocation(location);
 		try {
 			Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request
 					.getParameter("date"));
@@ -108,8 +113,16 @@ public class RequestController extends HttpServlet {
 			e.printStackTrace();
 		}
 		req.setTime(request.getParameter("time"));
-		req.setReqAdmin(user.getEmail());
-		req.setRepAdmin(dao.getTeamAdminEmail(dao.getAllUsers(), request.getParameter("away")));
+		
+		String repAdmin=dao.getTeamAdminEmail(dao.getAllUsers(), request.getParameter("away"));
+		String reqAdmin=user.getEmail();
+		for(int i=reqAdmin.length();i<50;i++)
+			reqAdmin+=" ";
+		req.setReqAdmin(reqAdmin);
+		for(int i=repAdmin.length();i<50;i++)
+			repAdmin+=" ";
+		req.setLocation(location);
+		req.setRepAdmin(repAdmin);
 		
 		daoReq.addRequest(req);
 		forward=HOMEPAGE;
