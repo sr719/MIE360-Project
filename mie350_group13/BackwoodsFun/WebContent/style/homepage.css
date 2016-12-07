@@ -1,24 +1,10 @@
-  	
-/*body{
-  background: url("http://wallpapercave.com/wp/QljQ23w.jpg") no-repeat center center fixed;
+body{
+  background: url("http://wallpapercave.com/wp/QljQ23w.jpg");
   background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}*/
-
-body {
-	background:	url("http://wallpapercave.com/wp/QljQ23w.jpg");
-  		 -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  		/*margin: 0;
-		padding: 0;
-		width: 100%;
-		height: 100%;*/
-		
 }
 
  caption{
@@ -93,7 +79,7 @@ body {
     left: 5%;
     top: 45%;
 }
-.createrequest{
+.reqpage{
     display: inline;
     position: absolute;
     background-color: #14213D;
@@ -103,19 +89,7 @@ body {
     padding: 14px;
     background-image:-webkit-linear-gradient(black, red);
     left: 5%;
-    top: 45%;
-}
-.viewrequest{
-    display: inline;
-    position: absolute;
-    background-color: #14213D;
-    color: #FFF;
-    font-family: 'Lucida Sans Unicode';
-    font-size: 26px;
-    padding: 14px;
-    background-image:-webkit-linear-gradient(black, red);
-    left: 5%;
-    top: 45%;
+    top: 55%;
 }
 table{
 	width: 100%;

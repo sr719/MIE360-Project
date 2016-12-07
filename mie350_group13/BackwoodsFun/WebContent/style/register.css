@@ -12,7 +12,13 @@ html {
 
     /*background = gradient + image pattern combo*/
     background:
-        linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+             url("http://wallpapercave.com/wp/QljQ23w.jpg") no-repeat center center fixed;
+             background-attachment: scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+             background-size: cover;
+            
 }
 
 body {
@@ -43,7 +49,7 @@ body {
     display: none;
 }
 /*inputs*/
-#msform input, #msform textarea, #msform select {
+#msform input, #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;

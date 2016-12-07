@@ -1,0 +1,48 @@
+body{
+	background: url("http://wallpapercave.com/wp/QljQ23w.jpg") no-repeat center center fixed;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.join{
+    display: inline;
+    position: absolute;
+    background-color: #14213D;
+    color: #FFF;
+    font-family: 'Lucida Sans Unicode';
+    font-size: 9px;
+    text-align: center;
+    padding: 1px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-image:-webkit-linear-gradient(black, red);
+}
+caption{
+	font-size: 30px;
+	font-style: bold;
+}
+table{
+	width: 100%;
+}
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    color:white;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #fff;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: white;
+    color: black;
+}
+}

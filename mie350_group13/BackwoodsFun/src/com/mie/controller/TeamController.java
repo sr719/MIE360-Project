@@ -28,6 +28,7 @@ public class TeamController extends HttpServlet {
 	
 	private static String LIST_TEAM = "/viewMyTeam.jsp";
 	private static String HOMEPAGE = "/homepage.jsp";
+	private static String JOINTEAM = "/joinTeam.jsp";
    
     public TeamController() {
         super();
@@ -52,9 +53,19 @@ public class TeamController extends HttpServlet {
 			User user = new User();
 			HttpSession session = request.getSession(false);
 			user = (User) session.getAttribute("user");
-			//ADD CODE TO GET TEAM TO BE JOINED
-			//ADD CODE TO INCREMENET # OF TEAM MEMBERS IN TEAM DAO
-			//ADD CODE TO CHANGE TEAM COLUMN IN PLAYERS TABLE
+			
+			String name = request.getParameter("team");
+			Team join = new Team();
+			join = daoTeam.getTeam(name);
+			daoTeam.addOnePlayer(join);
+			
+			user.setTeam(name);
+			dao.updateUser(user);
+		}else if (action.equalsIgnoreCase("listAllTeams")) {
+			forward = JOINTEAM;
+			User user = new User();
+			
+			request.setAtrribute("teams", daoTeam.getAllTeams());
 		}else {
 			//forward = INSERT_OR_EDIT;
 		}

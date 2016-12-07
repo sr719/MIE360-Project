@@ -92,6 +92,39 @@ public class TeamDao {
 		return result;
 	}
 	
+	public Team getTeam(String name){
+		List<Team> result = this.getAllTeams();
+		Team getTeam = new Team();
+			
+			for(int i=0; i<result.size(); i++){
+				if(result.get(i).getName() == name){
+					getTeam = result.get(i);
+					}
+			}
+		return getTeam;
+	}
 	
+	public List<Team> getAllTeams() {
+		List<Team> result = new ArrayList<Team>();
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from Team");
+			
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				Team team= new Team();
+				team.setName(rs.getString("team_Name"));
+				team.setNumPlayers(rs.getInt("number_players"));
+				result.add(team);
+				}
+			}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 	
 }
