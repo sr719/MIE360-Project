@@ -87,6 +87,8 @@ public class ScheduleController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String forward = "";
 		String action = request.getParameter("action");
+		HttpSession session = request.getSession(false);
+
 		if(action.equalsIgnoreCase("updateResult")){
 			
 		}

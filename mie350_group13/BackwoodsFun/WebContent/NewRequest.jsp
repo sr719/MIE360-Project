@@ -26,7 +26,7 @@
             <option value="Choose" disabled selected hidden>Opponent</option>
         	
         	<c:forEach items="${otherTeams}" var="i">
-                     <option value="${i.getName()}"> <c:out value="${i.getName()}"/</option>
+                     <option value="${i.getName()}"> <c:out value="${i.getName()}"/</option> <!-- have to somehow get the value of the think in the middle show up on the page -->
                      
 			</c:forEach>
             </select>

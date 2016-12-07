@@ -26,7 +26,7 @@ function CheckLoc(val){
 
 <body>
 <div id="msform">
-    <form method="POST" action='UserController' name="frmAddUser" >
+    <form method="POST" action='ScheduleController' name="frmAddResult" >
     	<fieldset>
         	<h2 class="fs-title">Add Result</h2>
         	<select name="pos" onchange='CheckLoc(this.value);'>
