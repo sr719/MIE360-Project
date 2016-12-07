@@ -48,7 +48,9 @@
     <td align='center'><form><input type=submit value="join"></form></td>
   </tr> -->
 </table>
-  <a rel="import" href="addGame.jsp"> Add Game<a/>
+ <a href = "/BackwoodsFun/ScheduleController?action=requestResult" class="createteam" style="text-decoration: none"><span> Submit game results</span> </a>
+              
+<a href = "/BackwoodsFun/ScheduleController?action=addGame" class = "jointeam" style = "text-decoration: none"><span> Add new game result </span> </a>
 
 </body>
 

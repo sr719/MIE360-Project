@@ -17,6 +17,7 @@
     <th>Game</th>
     <th>Game Date</th>
     <th>Game Time</th>
+    <th>Result</th>
     
   </tr>
   </thead>
@@ -28,6 +29,7 @@
 						<td><c:out value="${i.getHome()} @ ${i.getAway()}" /></td>
 						<td><c:out value="${i.getGame_Date()}" /></td>
 						<td><c:out value="${i.getGame_time()}" /></td>
+						<td align ="center"><a href="ScheduleController?action=result&reqID=<c:out value="${i.getId()}"/>">Result</a> </td>
 						
 					</tr>
 				</c:forEach>

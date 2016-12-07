@@ -11,6 +11,7 @@ private String game_time;
 private String result;
 private String Game;
 private int id;
+private String HomeOrAway;
 public String getHome() {
 	return Home;
 }
@@ -69,6 +70,12 @@ public int getId() {
 }
 public void setId(int id) {
 	this.id = id;
+}
+public String getHomeOrAway() {
+	return HomeOrAway;
+}
+public void setHomeOrAway(String homeOrAway) {
+	HomeOrAway = homeOrAway;
 }
 }
 

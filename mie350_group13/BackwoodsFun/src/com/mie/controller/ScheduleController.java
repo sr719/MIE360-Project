@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mie.dao.RequestDao;
 import com.mie.dao.ScheduleDao;
 import com.mie.dao.StandingsDao;
 import com.mie.dao.TeamDao;
+import com.mie.model.Request;
 import com.mie.model.Schedule;
 import com.mie.model.Team;
 import com.mie.model.User;
@@ -34,6 +36,8 @@ public class ScheduleController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String ADD_GAME = "/addResult.jsp";
+	private static final String ADD_REQUEST_RESULT = "/addRequestResult.jsp";
+
 	private static final String HOMEPAGE = "/homepage.jsp";
 	private static final String REQUEST_RESULT = "/requestResult.jsp";
     private ScheduleDao daoSchedule;   
@@ -111,6 +115,26 @@ public class ScheduleController extends HttpServlet {
 			List<Schedule> noResults =new ArrayList<Schedule>();
 			noResults=daoSchedule.getOtherSchedules(user.getTeam()) ;
 			request.setAttribute("noResults",noResults );
+		}
+		else if(action.equalsIgnoreCase("result")) {
+			HttpSession session = request.getSession(false);
+			int reqId = Integer.parseInt(request.getParameter("reqID"));
+			RequestDao daoReq=new RequestDao();
+			Schedule result=daoReq.getResultById(reqId);
+			User user = (User) session.getAttribute("user");
+			forward=ADD_REQUEST_RESULT;
+			if (result.getHome()==user.getTeam()){
+				result.setHomeOrAway("Home");
+				request.setAttribute("opponent",result.getAway() );
+
+			}
+			else {
+				result.setHomeOrAway("Away");
+				request.setAttribute("opponent",result.getHome() );
+				
+			}
+			request.setAttribute("result",result );
+
 		}
 		else {
 
