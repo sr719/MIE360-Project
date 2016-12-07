@@ -18,10 +18,10 @@
 		var initialLocaleCode = 'en';
 		var events = [];
 		
-		for( i=0; i<"${length}"; i++){
-			events.push({title:"${schedules.get(i).getGame() }", start: '2016-11-01' })
-		}
-		events.push({title:'test',start:'2016-11-02'})
+		<c:forEach items="${schedules}" var="sch">		
+		 		events.push({title:"${sch.getGame() }", start: "${sch.getGameDateTime()}" })		
+		 		</c:forEach>
+		//events.push({title:'test',start:'2016-11-02'})
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
