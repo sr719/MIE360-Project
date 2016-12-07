@@ -1,7 +1,6 @@
 package com.mie.model;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 
 public class Schedule {
 private String Home;
@@ -33,8 +32,8 @@ public Date getGame_Date() {
 	
 	return game_Date;
 }
-public void setGame_Date(Date game_Date) {
-	this.game_Date = game_Date;
+public void setGame_Date(Date gameDate) {
+	this.game_Date = gameDate;
 	
 
 }

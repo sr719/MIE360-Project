@@ -116,6 +116,25 @@ public class ScheduleDao {
 
 		return result;
 	}
+
+	public void addResult(Schedule game) {
+		// TODO Auto-generated method stub
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("insert into Schedule(Home,Away,Location,game_Date,game_Time,result) values (?, ?, ?, ?, ?, ?)");
+			// Parameters start with 1
+			preparedStatement.setString(1, game.getHome());
+			preparedStatement.setString(2, game.getAway());
+			preparedStatement.setString(3, game.getLocation());
+			preparedStatement.setDate(4, new java.sql.Date(game.getGame_Date().getTime()));
+			preparedStatement.setString(5, game.getGame_time());
+			preparedStatement.setString(6, game.getResult());
+			
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

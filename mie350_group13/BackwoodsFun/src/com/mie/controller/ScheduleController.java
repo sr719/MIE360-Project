@@ -91,15 +91,16 @@ public class ScheduleController extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession(false);
+		User user = (User) session.getAttribute("user");
 		Schedule game=new Schedule();
 		String teamLoc=request.getParameter("Loc");
 		//setting home and away 
 		if(teamLoc.equals("Home")){
-			game.setHome(teamLoc);
+			game.setHome(user.getTeam());
 			game.setAway(request.getParameter("opponent"));
 		}
 		else if(teamLoc.equals("Away")){
-			game.setAway(teamLoc);
+			game.setAway(user.getTeam());
 			game.setHome(request.getParameter("opponent"));
 
 		}
@@ -108,11 +109,19 @@ public class ScheduleController extends HttpServlet {
 			Date gameDate = new SimpleDateFormat("MM/dd/yyyy").parse(request
 					.getParameter("game_Date"));
 			// don't ask what happened below... I dunno why either
-			game.setGame_Date((java.sql.Date) gameDate);
+			game.setGame_Date( gameDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+		game.setGame_time(request.getParameter("time"));
+		String homeScore=request.getParameter("HomeScore");
+		String awayScore=request.getParameter("AwayScore");
+		String result=homeScore+"-"+awayScore;
+		game.setResult(result);
+		daoSchedule.addResult(game);
+		RequestDispatcher view = request.getRequestDispatcher(CURRENT_SCHEDULE);
+		view.forward(request, response);
+
 	}
 
 }

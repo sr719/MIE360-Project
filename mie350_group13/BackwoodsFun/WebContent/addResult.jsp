@@ -38,10 +38,10 @@ function CheckLoc(val){
             <input type="text" name="opponent" id="opponentHome" placeholder="Home" style='display:none;'/>
             <input type="text" name="opponent" id="opponentAway"  placeholder="Away" style='display:none;'/>
         	<input type="text" name="Location" placeholder="Location" pattern="^[a-zA-Z]{2,}$" title="Minimum two letters" required/>
-	    	<input type="date" name="game_Date" placeholder="Game Date" required/>
+	    	<input type="text" name="game_Date" placeholder="Game Date" pattern="^((((0[13578])|([13578])|(1[02]))[\/](([1-9])|([0-2][0-9])|(3[01])))|(((0[469])|([469])|(11))[\/](([1-9])|([0-2][0-9])|(30)))|((2|02)[\/](([1-9])|([0-2][0-9]))))[\/]\d{4}$|^\d{4}$" title="MM/DD/YYYY" required/>
 	       	<input type="text" name="time" placeholder="Time ex. 11:30am" pattern="^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b" title="Enter time followed by am or pm, no spaces"required/>
-	       	<input type="text" name="Home Score" placeholder="Home Score"  required/>
-	       	<input type="text" name="Away Score" placeholder="Away Score"  required/>
+	       	<input type="text" name="HomeScore" placeholder="Home Score"  required/>
+	       	<input type="text" name="AwayScore" placeholder="Away Score"  required/>
         	<input type="submit" name="submit" class="submit action-button" value="Submit" >       	
         	
     	</fieldset>
