@@ -35,8 +35,14 @@ function CheckLoc(val){
                      <option value="Away" required>Away</option>
                      
             </select>
-            <input type="text" name="opponent" id="opponentHome" placeholder="Home" style='display:none;'/>
-            <input type="text" name="opponent" id="opponentAway"  placeholder="Away" style='display:none;'/>
+           <select name="opponent">
+            <option value="Choose" disabled selected hidden>Opponent</option>
+        	
+        	<c:forEach items="${otherTeams}" var="i">
+                     <option value="${i.getName()}"> ${i.getName()}</option> <!-- have to somehow get the value of the think in the middle show up on the page -->
+                     
+			</c:forEach>
+            </select>
         	<input type="text" name="Location" placeholder="Location" pattern="^[a-zA-Z]{2,}$" title="Minimum two letters" required/>
 	    	<input type="text" name="game_Date" placeholder="Game Date" pattern="^((((0[13578])|([13578])|(1[02]))[\/](([1-9])|([0-2][0-9])|(3[01])))|(((0[469])|([469])|(11))[\/](([1-9])|([0-2][0-9])|(30)))|((2|02)[\/](([1-9])|([0-2][0-9]))))[\/]\d{4}$|^\d{4}$" title="MM/DD/YYYY" required/>
 	       	<input type="text" name="time" placeholder="Time ex. 11:30am" pattern="^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b" title="Enter time followed by am or pm, no spaces"required/>

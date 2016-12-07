@@ -16,7 +16,9 @@ import javax.servlet.http.HttpSession;
 
 import com.mie.dao.ScheduleDao;
 import com.mie.dao.StandingsDao;
+import com.mie.dao.TeamDao;
 import com.mie.model.Schedule;
+import com.mie.model.Team;
 import com.mie.model.User;
 
 
@@ -31,6 +33,8 @@ public class ScheduleController extends HttpServlet {
 	
 
 	private static final long serialVersionUID = 1L;
+	private static final String ADD_GAME = "/addResult.jsp";
+	private static final String HOMEPAGE = "/homepage.jsp";
     private ScheduleDao daoSchedule;   
     /**
      * @see HttpServlet#HttpServlet()
@@ -48,6 +52,9 @@ public class ScheduleController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String forward = "";
 		String action = request.getParameter("action");
+		if (action==null)
+			action="";
+		
 		if (action.equalsIgnoreCase("fullSchedule")) {// RETURN HERE
 			
 			forward = FULL_SCHEDULE;
@@ -75,12 +82,31 @@ public class ScheduleController extends HttpServlet {
 		} else if (action.equalsIgnoreCase("listUser")) {
 			forward = CURRENT_SCHEDULE;
 			//request.setAttribute("users", dao.getAllUsers());
-		} else {
-			forward = CURRENT_SCHEDULE;
+		} 
+		else if(action.equalsIgnoreCase("addGame")) {
+			forward=ADD_GAME;
+			HttpSession session = request.getSession(false);
+			User user = (User) session.getAttribute("user");
+			TeamDao teamDao=new TeamDao();
+			List<Team> otherTeams= teamDao.getOtherTeams(user.getTeam(),user);
+			Team[] others= new Team[otherTeams.size()];
+			others=otherTeams.toArray(others);
+		/*	for (int i=0; i<otherTeams.size();i++){
+				System.out.println(otherTeams.get(i).getName());
+			}*/
+			request.setAttribute("otherTeams", otherTeams);
+			
 		}
+		else {
+
+			forward=HOMEPAGE;
+			
+					}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
+		if (forward==ADD_GAME)
+			return;
 	}
 
 	/**
@@ -88,12 +114,16 @@ public class ScheduleController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request,response);
 		String forward = "";
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
 		Schedule game=new Schedule();
 		String teamLoc=request.getParameter("Loc");
+		for (int i=teamLoc.length();i<30;i++){
+			teamLoc=teamLoc+" ";
+		}
 		//setting home and away 
 		if(teamLoc.equals("Home")){
 			game.setHome(user.getTeam());
@@ -119,7 +149,7 @@ public class ScheduleController extends HttpServlet {
 		String result=homeScore+"-"+awayScore;
 		game.setResult(result);
 		daoSchedule.addResult(game);
-		RequestDispatcher view = request.getRequestDispatcher(CURRENT_SCHEDULE);
+		RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
 		view.forward(request, response);
 
 	}
