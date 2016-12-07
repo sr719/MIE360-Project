@@ -39,7 +39,7 @@
 	</div>
 
 
-	<a href = "NewRequest.jsp"><span> New Game Request</span> </a>
+	<a href = "/BackwoodsFun/RequestController?action=newRequest"><span> New Game Request</span> </a>
 	<a href = "/BackwoodsFun/RequestController?action=listRequest"><span> View My Requests</span> </a>
 	
 </body>

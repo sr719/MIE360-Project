@@ -28,6 +28,7 @@ public class RequestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String LIST_REQUEST = "/listRequest.jsp";
 	private static String HOMEPAGE = "/homepage.jsp";
+	private static String NEW_REQUEST="/NewRequest.jsp";
 	String forward="";
 	private UserDao dao;
 	private RequestDao daoReq;
@@ -40,8 +41,12 @@ public class RequestController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String forward = "";
 		String action = request.getParameter("action");
+		//if statement below needed to get into else;
+		if(action==null)
+			action="";
 		String reqID = request.getParameter("req");
 
 		if (action.equalsIgnoreCase("accept")) {
@@ -56,8 +61,24 @@ public class RequestController extends HttpServlet {
 			forward = LIST_REQUEST;
 			request.setAttribute("requests", dao.getAllUsers());
 		} 
-		else {
-			forward = LIST_REQUEST;
+		
+		else if (action.equalsIgnoreCase("newRequest")){
+			HttpSession session = request.getSession(false);
+			User user = (User) session.getAttribute("user");
+			forward=NEW_REQUEST;
+			TeamDao teamDao=new TeamDao();
+			List<Team> otherTeams= teamDao.getOtherTeams(user.getTeam(),user);
+			Team[] others= new Team[otherTeams.size()];
+			others=otherTeams.toArray(others);
+		/*	for (int i=0; i<otherTeams.size();i++){
+				System.out.println(otherTeams.get(i).getName());
+			}*/
+			request.setAttribute("otherTeams", otherTeams);
+
+		
+		}
+		else{
+			forward = HOMEPAGE;
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -65,16 +86,15 @@ public class RequestController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request,response);
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
 		Request req = new Request();
+		String action = request.getParameter("action");
+	
 		
 		req.setHome(user.getTeam());
-		TeamDao teamDao=new TeamDao();
-		List<Team> otherTeams= teamDao.getOtherTeams(user.getTeam(),user);
-		
-		request.setAttribute("otherTeams", otherTeams);
-		
+				
 		req.setAway(request.getParameter("away"));
 		req.setLocation(request.getParameter("location"));
 		try {

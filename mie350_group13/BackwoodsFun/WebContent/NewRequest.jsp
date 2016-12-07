@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -26,7 +28,7 @@
             <option value="Choose" disabled selected hidden>Opponent</option>
         	
         	<c:forEach items="${otherTeams}" var="i">
-                     <option value="${i.getName()}"> <c:out value="${i.getName()}"/</option> <!-- have to somehow get the value of the think in the middle show up on the page -->
+                     <option value="${i.getName()}"> ${i.getName()}</option> <!-- have to somehow get the value of the think in the middle show up on the page -->
                      
 			</c:forEach>
             </select>
