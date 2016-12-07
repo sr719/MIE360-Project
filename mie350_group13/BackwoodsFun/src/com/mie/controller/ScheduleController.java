@@ -121,9 +121,6 @@ public class ScheduleController extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		Schedule game=new Schedule();
 		String teamLoc=request.getParameter("Loc");
-		for (int i=teamLoc.length();i<30;i++){
-			teamLoc=teamLoc+" ";
-		}
 		//setting home and away 
 		if(teamLoc.equals("Home")){
 			game.setHome(user.getTeam());
@@ -134,7 +131,11 @@ public class ScheduleController extends HttpServlet {
 			game.setHome(request.getParameter("opponent"));
 
 		}
-		game.setLocation(request.getParameter("Location"));
+		String location=request.getParameter("Location");
+		for(int i=location.length();i<30;i++)
+			location+=" ";
+		game.setLocation(location);
+		
 		try {
 			Date gameDate = new SimpleDateFormat("MM/dd/yyyy").parse(request
 					.getParameter("game_Date"));

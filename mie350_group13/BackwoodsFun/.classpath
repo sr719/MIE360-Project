@@ -2,13 +2,14 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/hsqldb.jar"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/jackcess-2.1.3.jar"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/jstl.jar"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/standard.jar"/>
-	<classpathentry kind="lib" path="//SRVB/Homes$/rathwel1/Desktop/backwoods/mie350_group13/External Jar/ucanaccess-3.0.6.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/hsqldb.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/jackcess-2.1.3.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/jstl.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/standard.jar"/>
+	<classpathentry kind="lib" path="//SRVD/Homes$/chaaban2/Desktop/WORKSPACE/ucanaccess-3.0.6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
