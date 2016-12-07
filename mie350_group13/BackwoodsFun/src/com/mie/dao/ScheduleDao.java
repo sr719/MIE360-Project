@@ -74,7 +74,7 @@ public class ScheduleDao {
 				schedule.setAway(rs.getString("Away"));
 				schedule.setLocation(rs.getString("Location"));
 				schedule.setGame_Date(rs.getDate("game_Date"));
-				schedule.setGame_time(rs.getTime("game_Time"));
+				schedule.setGame_time(rs.getString("game_Time"));
 				schedule.setResult(rs.getString("Result"));
 				schedule.setGame();
 				schedules.add(schedule);
@@ -103,7 +103,7 @@ public class ScheduleDao {
 				schedule.setAway(rs.getString("Away"));
 				schedule.setLocation(rs.getString("Location"));
 				schedule.setGame_Date(rs.getDate("game_Date"));
-				schedule.setGame_time(rs.getTime("game_Time"));
+				schedule.setGame_time(rs.getString("game_Time"));
 				schedule.setResult(rs.getString("Result"));
 				schedule.setGame();
 				result.add(schedule);

@@ -8,7 +8,7 @@ private String Home;
 private String Away;
 private String Location;
 private Date game_Date;
-private Time game_time;
+private String game_time;
 private String result;
 private String Game;
 public String getHome() {
@@ -38,13 +38,13 @@ public void setGame_Date(Date game_Date) {
 	
 
 }
-public Time getGame_time() {
+public String getGame_time() {
 	
 	return game_time;
 	
 
 }
-public void setGame_time(Time game_time) {
+public void setGame_time(String game_time) {
 	this.game_time = game_time;
 }
 public String getResult() {

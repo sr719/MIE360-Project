@@ -83,6 +83,9 @@ public class RequestController extends HttpServlet {
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
+		//so won't get in infinite loop
+		if (forward==NEW_REQUEST)
+			return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -29,14 +29,14 @@ function CheckLoc(val){
     <form method="POST" action='ScheduleController' name="frmAddResult" >
     	<fieldset>
         	<h2 class="fs-title">Add Result</h2>
-        	<select name="pos" onchange='CheckLoc(this.value);'>
+        	<select name="Loc" onchange='CheckLoc(this.value);'>
                      <option value="Home or Away?" disabled selected>Home or Away?</option>
                      <option value="Home" required>Home</option>
                      <option value="Away" required>Away</option>
                      
             </select>
-            <input type="text" name="opponentHome" id="opponentHome" placeholder="Home" style='display:none;'/>
-            <input type="text" name="opponentAway" id="opponentAway"  placeholder="Away" style='display:none;'/>
+            <input type="text" name="opponent" id="opponentHome" placeholder="Home" style='display:none;'/>
+            <input type="text" name="opponent" id="opponentAway"  placeholder="Away" style='display:none;'/>
         	<input type="text" name="Location" placeholder="Location" pattern="^[a-zA-Z]{2,}$" title="Minimum two letters" required/>
 	    	<input type="date" name="game_Date" placeholder="Game Date" required/>
 	       	<input type="text" name="time" placeholder="Time ex. 11:30am" pattern="^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b" title="Enter time followed by am or pm, no spaces"required/>

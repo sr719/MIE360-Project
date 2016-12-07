@@ -1,7 +1,10 @@
 package com.mie.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -88,14 +91,28 @@ public class ScheduleController extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession(false);
+		Schedule game=new Schedule();
+		String teamLoc=request.getParameter("Loc");
+		//setting home and away 
+		if(teamLoc.equals("Home")){
+			game.setHome(teamLoc);
+			game.setAway(request.getParameter("opponent"));
+		}
+		else if(teamLoc.equals("Away")){
+			game.setAway(teamLoc);
+			game.setHome(request.getParameter("opponent"));
 
-		if(action.equalsIgnoreCase("updateResult")){
-			
 		}
-		else if(action.equalsIgnoreCase("addGame")){
-			
-			
+		game.setLocation(request.getParameter("Location"));
+		try {
+			Date gameDate = new SimpleDateFormat("MM/dd/yyyy").parse(request
+					.getParameter("game_Date"));
+			// don't ask what happened below... I dunno why either
+			game.setGame_Date((java.sql.Date) gameDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+		
 	}
 
 }
