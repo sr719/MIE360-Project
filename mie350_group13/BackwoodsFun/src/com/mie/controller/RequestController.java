@@ -3,6 +3,7 @@ package com.mie.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,18 +50,26 @@ public class RequestController extends HttpServlet {
 			action="";
 
 		if (action.equalsIgnoreCase("accept")) {
+
+			HttpSession session = request.getSession(false);
+			User user = (User) session.getAttribute("user");
 			int reqID = Integer.parseInt(request.getParameter("req"));
 			daoReq.acceptRequest(reqID);
 			forward = LIST_REQUEST;
-			request.setAttribute("requests", daoReq.getAllRequests());
+			
 		} else if (action.equalsIgnoreCase("decline")) {
 			int reqID = Integer.parseInt(request.getParameter("req"));
 			daoReq.declineRequest(reqID);
 			forward = LIST_REQUEST;
 			request.setAttribute("requests", daoReq.getAllRequests());
 		} else if (action.equalsIgnoreCase("listRequest")) {
+			HttpSession session = request.getSession(false);
+			User user = (User) session.getAttribute("user");
 			forward = LIST_REQUEST;
-			request.setAttribute("requests", dao.getAllUsers());
+			List<Request> otherRequests=new ArrayList <Request>();
+			otherRequests=daoReq.getOtherRequests(user.getEmail());
+			//System.out.println(user.getEmail());
+			request.setAttribute("requests",otherRequests );
 		} 
 		
 		else if (action.equalsIgnoreCase("newRequest")){

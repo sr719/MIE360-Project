@@ -6,9 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.mie.model.Request;
+import com.mie.model.Schedule;
 import com.mie.model.User;
 import com.mie.util.DbUtil;
 
@@ -19,7 +21,16 @@ public class RequestDao {
 	public RequestDao() {
 		connection = DbUtil.getConnection();
 	}
-	
+	public List<Request> getOtherRequests(String email){
+		List<Request> requests = getAllRequests();
+		for (int i=0;i<requests.size();i++){
+			//System.out.println(requests.get(i).getReqAdmin().trim().equals(email.trim()));
+
+			if(requests.get(i).getReqAdmin().trim().equals(email))
+				requests.remove(i);
+		}
+		return requests;
+	}
 	public List<Request> getAllRequests() {
 		List<Request> requests = new ArrayList<Request>();
 		try {
@@ -67,11 +78,11 @@ public class RequestDao {
 	public void declineRequest(int reqID) {
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("delete from Requests where ReqID=?");
+					.prepareStatement("delete * from Requests where ReqID=?");
 			// Parameters start with 1
 			
 			
-			preparedStatement.setInt(2, reqID);
+			preparedStatement.setInt(1, reqID);
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -90,10 +101,16 @@ public class RequestDao {
 					break;
 				}
 			}
+			//insert data in request into schedule table
+			Schedule game=new Schedule();
+			ScheduleDao daoSch=new ScheduleDao();
+			game.setHome(accepted.getHome());
+			game.setAway(accepted.getAway());
+			game.setLocation(accepted.getLocation());
+			game.setGame_Date(accepted.getDate());
+			game.setGame_time(accepted.getTime());
 			
-			//PASS REQUEST OBJECT INTO SCHEDULE CLASS TO ADD IT TO THE SCHEDULE
-			//FUNCTION/CLASS NOT YET  CREATED
-			
+			daoSch.addResult(game);
 			declineRequest(reqID);
 	}
 	

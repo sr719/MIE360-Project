@@ -48,8 +48,8 @@
 						<td align="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${request.getDate()}" /></td>
 						<td align="center"><c:out value="${request.getTime()}" /></td>
 						<td align="center"><c:out value="${request.getReqAdmin()}" /></td>
-						<td <a href="RequestController?action=accept&req=${request.getId()}">Accept</a> /></td>
-						<td <a href="RequestController?action=decline">Decline</a> /></td>
+						<td align ="center"><a href="RequestController?action=accept&req=<c:out value="${request.getId()}"/>">Accept</a> </td>
+						<td align="center"><a href="RequestController?action=decline&req=<c:out value="${request.getId()}"/>">Decline</a> </td>
 					</tr>
 				</c:forEach>
 			</tbody>
