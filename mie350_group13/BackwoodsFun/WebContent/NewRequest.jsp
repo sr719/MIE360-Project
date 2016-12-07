@@ -23,9 +23,10 @@
     	<fieldset>
         	<h2 class="fs-title">New Game Request</h2>
         	<select name="away">
+            <option value="Choose" disabled selected hidden>Opponent</option>
+        	
         	<c:forEach items="${otherTeams}" var="i">
-                     <option value="Choose" disabled selected hidden>Opponent</option>
-                     <option value="${i.getName()}">${i.getName()}</option>
+                     <option value="${i.getName()}"> <c:out value="${i.getName()}"/</option>
                      
 			</c:forEach>
             </select>
