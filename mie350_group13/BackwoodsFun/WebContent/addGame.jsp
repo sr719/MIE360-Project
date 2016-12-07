@@ -13,7 +13,7 @@
 </head>
 <body>
 <ul>
-  			<li><a href = "requestResult.jsp" class="createteam" style="text-decoration: none"><span>Submit Request Result(FIND BETTER NAME )</span> </a></li>
+  			<li><a href = "/BackwoodsFun/ScheduleController?action=requestResult" class="createteam" style="text-decoration: none"><span>Submit Request Result(FIND BETTER NAME )</span> </a></li>
 			<li><a href = "/BackwoodsFun/ScheduleController?action=addGame" class = "jointeam" style = "text-decoration: none"><span> Add new game </span> </a></li>
 			</ul>
 </body>

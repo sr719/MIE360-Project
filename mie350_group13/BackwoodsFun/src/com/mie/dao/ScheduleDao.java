@@ -21,48 +21,7 @@ public class ScheduleDao {
 		connection = DbUtil.getConnection();
 	}
 	
-	public void addTeam(Team team){
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("insert into Team(team_Name,number_players) values (?, ?)");
-			
-			// Parameters start with 1
-						preparedStatement.setString(1, team.getName());
-						preparedStatement.setInt(2, 1);
-						preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
-	public void addOnePlayer(Team team){
-		try {
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("update Team set number_players=?"
-							+ " where team_Name=?");
-			// Parameters start with 1
-			preparedStatement.setInt(1, team.getNumPlayers()+1);
-			preparedStatement.setString(2, team.getName());
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public List <User> getTeamInfo(String teamName, List<User> list){
-		List <User> newList;
-		newList = list;
-		
-		for(int i = 0;i < newList.size(); i++){
-			if(!(newList.get(i).getTeam() == teamName))
-			{
-				newList.remove(i);
-			}
-		}
-		
-		return newList;
-	}
-
 	public List<Schedule> getAllSchedules() {
 		List<Schedule> schedules = new ArrayList<Schedule>();
 		try {
@@ -70,6 +29,7 @@ public class ScheduleDao {
 			ResultSet rs = statement.executeQuery("select * from Schedule");
 			while (rs.next()) {
 				Schedule schedule= new Schedule();
+				schedule.setId(rs.getInt("ScheduleID"));
 				schedule.setHome(rs.getString("Home"));
 				schedule.setAway(rs.getString("Away"));
 				schedule.setLocation(rs.getString("Location"));
@@ -99,6 +59,7 @@ public class ScheduleDao {
 			
 			while (rs.next()) {
 				Schedule schedule= new Schedule();
+				schedule.setId(rs.getInt("ScheduleID"));
 				schedule.setHome(rs.getString("Home"));
 				schedule.setAway(rs.getString("Away"));
 				schedule.setLocation(rs.getString("Location"));
@@ -120,7 +81,7 @@ public class ScheduleDao {
 	public void addResult(Schedule game) {
 		// TODO Auto-generated method stub
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("insert into Schedule(Home,Away,Location,game_Date,game_Time,result) values (?, ?, ?, ?, ?, ?)");
+			PreparedStatement preparedStatement = connection.prepareStatement("insert into Schedule(Home,Away,Location,game_Date,game_Time,result,ScheduleID) values (?, ?, ?, ?, ?, ?,?)");
 			// Parameters start with 1
 			preparedStatement.setString(1, game.getHome());
 			preparedStatement.setString(2, game.getAway());
@@ -128,12 +89,25 @@ public class ScheduleDao {
 			preparedStatement.setDate(4, new java.sql.Date(game.getGame_Date().getTime()));
 			preparedStatement.setString(5, game.getGame_time());
 			preparedStatement.setString(6, game.getResult());
+			preparedStatement.setInt(7,game.getId());
 			
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public   <Schedule>List getOtherSchedules(String team) {
+		// TODO Auto-generated method stub
+				List<com.mie.model.Schedule> result = new ArrayList<com.mie.model.Schedule>();
+				List<com.mie.model.Schedule> allSchedules=getAllSchedules();
+				for(int i=0;i<allSchedules.size();i++)
+					if(allSchedules.get(i).getResult()==null){
+						result.add(allSchedules.get(i));
+					}
+
+				return result;
 	}
 	
 	

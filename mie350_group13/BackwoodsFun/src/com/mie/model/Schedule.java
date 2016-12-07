@@ -10,6 +10,7 @@ private Date game_Date;
 private String game_time;
 private String result;
 private String Game;
+private int id;
 public String getHome() {
 	return Home;
 }
@@ -63,6 +64,12 @@ public String getGameDateTime(){
 	String time=game_time.toString();
 	return(date+"T"+time);
 	}
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
 }
 
 

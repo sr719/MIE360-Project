@@ -35,6 +35,7 @@ public class ScheduleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ADD_GAME = "/addResult.jsp";
 	private static final String HOMEPAGE = "/homepage.jsp";
+	private static final String REQUEST_RESULT = "/requestResult.jsp";
     private ScheduleDao daoSchedule;   
     /**
      * @see HttpServlet#HttpServlet()
@@ -96,6 +97,20 @@ public class ScheduleController extends HttpServlet {
 			}*/
 			request.setAttribute("otherTeams", otherTeams);
 			
+		}
+		else if(action.equalsIgnoreCase("requestResult")) {
+			
+			// WORK ON THIS LATER
+			forward=REQUEST_RESULT;
+			HttpSession session = request.getSession(false);
+			User user = (User) session.getAttribute("user");		
+			
+		/*	for (int i=0; i<otherTeams.size();i++){
+				System.out.println(otherTeams.get(i).getName());
+			}*/
+			List<Schedule> noResults =new ArrayList<Schedule>();
+			noResults=daoSchedule.getOtherSchedules(user.getTeam()) ;
+			request.setAttribute("noResults",noResults );
 		}
 		else {
 
