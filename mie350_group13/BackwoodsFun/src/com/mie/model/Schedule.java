@@ -58,7 +58,7 @@ public String getGame(){
 	return Game;
 }
 public void setGame(){
-	Game= Home +" @ " + Away;
+	Game= Home +" - " + Away;
 }
 public String getGameDateTime(){
 	String date=game_Date.toString();

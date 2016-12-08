@@ -113,40 +113,6 @@ public class RequestDao {
 			daoSch.addResult(game);
 			declineRequest(reqID);
 	}
-	public Schedule getResultById(int reqId) {
-		Request request=new Request();
-		Schedule game=new Schedule();
-		ScheduleDao daoSch=new ScheduleDao();
-		try {
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("select * from Request where reqID=?");
-			preparedStatement.setInt(1, reqId);
-			ResultSet rs = preparedStatement.executeQuery();
-
-			if (rs.next()) {
-				request.setHome(rs.getString("Home"));
-				request.setAway(rs.getString("Away"));
-				request.setLocation(rs.getString("Location"));
-				request.setDate(rs.getDate("game_Date"));
-				request.setTime(rs.getString("game_Time"));
-				request.setRepAdmin(rs.getString("reply_Admin"));
-				request.setReqAdmin(rs.getString("request_Admin"));
-				request.setId(rs.getInt("ReqID"));
-			}
-			
-			game.setHome(request.getHome());
-			game.setAway(request.getAway());
-			game.setLocation(request.getLocation());
-			game.setGame_Date(request.getDate());
-			game.setGame_time(request.getTime());
-			
-			daoSch.addResult(game);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return game;
-
-	}
+	
 	
 }

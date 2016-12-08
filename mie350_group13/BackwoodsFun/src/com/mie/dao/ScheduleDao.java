@@ -111,7 +111,56 @@ public class ScheduleDao {
 	}
 
 
+	public Schedule getResultById(int reqId) {
+		Schedule game=new Schedule();
+		ScheduleDao daoSch=new ScheduleDao();
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select * from Schedule where ScheduleID=?");
+			preparedStatement.setInt(1, reqId);
+			ResultSet rs = preparedStatement.executeQuery();
 
+			while (rs.next()) {
+				game.setHome(rs.getString("Home"));
+				game.setAway(rs.getString("Away"));
+				game.setLocation(rs.getString("Location"));
+				game.setGame_Date(rs.getDate("game_Date"));
+				game.setGame_time(rs.getString("game_Time"));
+				daoSch.addResult(game);
+
+			}
+			}catch (SQLException e) {
+		e.printStackTrace();
+	}
+
+		return game;
+
+	}
+
+
+	public void editResult(Schedule game) {
+		// TODO Auto-generated method stub
+		String test="";
+		test+=game.getId();
+		System.out.println(game.getId());
+		System.out.println(test);
+		if(test.isEmpty() || test==null){
+			addResult(game);
+			return;
+		}
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("update Schedule set Result=? where ScheduleID=?");
+			// Parameters start with 1
+			preparedStatement.setString(1, game.getResult());
+			preparedStatement.setInt(2, game.getId());
+			
+			
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 }

@@ -35,7 +35,7 @@
   <c:forEach items="${mySchedule}" var="i">
 
 					<tr>
-						<td><c:out value="${i.getHome()} @ ${i.getAway()}" /></td>
+						<td><c:out value="${i.getHome()} - ${i.getAway()}" /></td>
 						<td><c:out value="${i.getGame_Date()}" /></td>
 						<td><c:out value="${i.getGame_time()}" /></td>
 						<td><c:out value="${i.getResult()}" /></td>

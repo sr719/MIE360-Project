@@ -65,7 +65,7 @@ public class TeamController extends HttpServlet {
 			forward = JOINTEAM;
 			User user = new User();
 			
-			request.setAtrribute("teams", daoTeam.getAllTeams());
+			request.setAttribute("teams", daoTeam.getAllTeams());
 		}else {
 			//forward = INSERT_OR_EDIT;
 		}
