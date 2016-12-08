@@ -10,26 +10,47 @@
   <br>
     <center><a href = "homepage.html"><img src = "BFC.png" style = "width:200px; height:150px;"></a></center>
   </br>
-	<table>
-		<caption>Season Standings</caption>
+  
+  
+  <table>
+		<caption>Current Available Teams</caption>
   <tr>
     <th>Team Name</th>
-
-    <th>Win</th>
-    <th>Draw</th>
-    <th>Loss</th>
+    <th>Number of Players</th>
+    <th>Join</th>
+  </tr>
+  	<tbody>
+		<c:forEach items="${teams}" var="team">
+			<tr>
+				<td align="center"><c:out value="${team.getName()}" /></td>
+				<td align="center"><c:out value="${team.getNumPlayers()}" /></td>
+				<td <a href="TeamController?action=joinTeam&team=${team.getName()}">Accept</a> /></td>
+			</tr>
+		</c:forEach>
+	</tbody>
+  </table>
+  
+  
+	<table>
+		<caption>League Standings</caption>
+  <tr>
+    <th>Team Name</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Ties</th>
     <th>Points</th>
   </tr>
- <!--  <tr>
-    <td>Gananoque</td>
-    <td>1</td>
-    <td align='center'><form><input type=submit value="Join"></form></td>
-  </tr>
-  <tr>
-    <td>Ottawa Valley</td>
-    <td>1</td>
-    <td align='center'><form><input type=submit value="join"></form></td>
-  </tr> -->
+ <tbody>
+		<c:forEach items="${standings}" var="standing">
+			<tr>
+				<td align="center"><c:out value="${standing.getTeam()}" /></td>
+				<td align="center"><c:out value="${standing.getWins()}" /></td>
+				<td align="center"><c:out value="${standing.getLosses()}" /></td>
+				<td align="center"><c:out value="${standing.getTies()}" /></td>
+				<td align="center"><c:out value="${standing.getPts()}" /></td>
+			</tr>
+		</c:forEach>
+	</tbody>
 </table>
 </body>
 
