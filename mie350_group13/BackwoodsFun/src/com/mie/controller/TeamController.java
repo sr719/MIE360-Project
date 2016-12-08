@@ -83,10 +83,24 @@ public class TeamController extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		user = (User) session.getAttribute("user");
 		String tName=request.getParameter("tname");
+		
 		for(int i=tName.length();i<100;i++)
 			tName+=" ";
+		for(int i=0;i<daoTeam.getAllTeams().size();i++){
+			if(daoTeam.getAllTeams().get(i).getName().trim().equals(tName.trim())){
+				//System.out.println("TESTTT");
+				Team join = new Team();
+				join = daoTeam.getTeam(tName.trim());
+				daoTeam.addOnePlayer(join);
+
+				user.setTeam(tName.trim());
+				dao.updateUser(user);
+				RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
+				view.forward(request, response);
+				return;
+			}
+		}
 		team.setName(tName);
-		
 		daoTeam.addTeam(team);
 		user.setisAdmin(true);
 		user.setTeam(request.getParameter("tname"));

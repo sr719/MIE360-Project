@@ -25,7 +25,7 @@
 					<tr>
 						<td name="team"><c:out value="${i.getName()}" /></td>
 						<td><c:out value="${i.getNumPlayers()}" /></td>
-						<td align='center'><form> <input class = "join" type=submit value="Join"></form></td>
+						<td align='center'><form  method="POST" action='TeamController' name="frmAddUser"> <input name="tname" class = "join" type=submit value="${i.getName()}"></form></td>
 					</tr>
 				</c:forEach>
 				</tbody>

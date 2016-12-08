@@ -93,15 +93,19 @@ public class TeamDao {
 	}
 	
 	public Team getTeam(String name){
+		//System.out.println("teysg");
 		List<Team> result = this.getAllTeams();
 		Team getTeam = new Team();
 			
 			for(int i=0; i<result.size(); i++){
-				if(result.get(i).getName() == name){
+				if(result.get(i).getName().trim().equals(name.trim())){
 					getTeam = result.get(i);
+					break;
 					}
 			}
+			
 		return getTeam;
+		
 	}
 	
 	public List<Team> getAllTeams() {
