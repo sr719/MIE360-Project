@@ -36,7 +36,7 @@
                      <option value="Forward" required>Forward</option>
                      <option value="Goalie"required >Goalie</option>
             </select>
-        	<input type="text" name="email" placeholder="Email"/>
+        	<input type="text" name="email" placeholder="Email" pattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"title="Please enter a valid email address"/>
         	<input type="password" id="pass" name="pass" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$" title="4-8 Characters, upper/lowercase and one number"required/>
         	<input type="password" id="cpass" name="cpass" placeholder="Confirm Password" required/>
         	<input type="submit" name="submit" class="submit action-button" value="Submit" onclick="return validatePassword()" >       	

@@ -18,23 +18,7 @@
 	<!-- </div> -->
 	
 	<div class = "schedule1">
-	<table>
-		<caption> MY SCHEDULE</caption>
-		<tr>
-			<th>Home</th>
-			<th>Away</th>
-			<th>Location</th>
-			<th>Game Date</th>
-			<th>Game Time</th>
-		</tr>
-		<tr>
-			<td>Montreal Canadiens</td>
-			<td>Maple Leafs</td>
-			<td>Air Canada Centre</td>
-			<td>11/02/2016</td>
-			<td>10:00 pm</td>
-		</tr>	
-		</table>
+	
 	</div>
 
 

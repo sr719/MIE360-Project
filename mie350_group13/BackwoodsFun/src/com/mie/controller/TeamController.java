@@ -40,6 +40,8 @@ public class TeamController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
+		if(action==null)
+			action="";
 
 		if (action.equalsIgnoreCase("listTeam")) {
 			forward = LIST_TEAM;
@@ -58,6 +60,7 @@ public class TeamController extends HttpServlet {
 			Team join = new Team();
 			join = daoTeam.getTeam(name);
 			daoTeam.addOnePlayer(join);
+			request.setAttribute("teams", daoTeam.getAllTeams());
 			
 			user.setTeam(name);
 			dao.updateUser(user);
@@ -67,7 +70,7 @@ public class TeamController extends HttpServlet {
 			
 			request.setAttribute("teams", daoTeam.getAllTeams());
 		}else {
-			//forward = INSERT_OR_EDIT;
+			forward = HOMEPAGE;
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -79,8 +82,10 @@ public class TeamController extends HttpServlet {
 		User user = new User();
 		HttpSession session = request.getSession(false);
 		user = (User) session.getAttribute("user");
-		
-		team.setName(request.getParameter("tname"));
+		String tName=request.getParameter("tname");
+		for(int i=tName.length();i<100;i++)
+			tName+=" ";
+		team.setName(tName);
 		
 		daoTeam.addTeam(team);
 		user.setisAdmin(true);
