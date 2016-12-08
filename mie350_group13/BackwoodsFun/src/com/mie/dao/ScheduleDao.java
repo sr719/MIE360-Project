@@ -80,6 +80,8 @@ public class ScheduleDao {
 
 	public void addResult(Schedule game) {
 		// TODO Auto-generated method stub
+		if(game.getId()>0)
+			return;
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("insert into Schedule(Home,Away,Location,game_Date,game_Time,result,ScheduleID) values (?, ?, ?, ?, ?, ?,?)");
 			// Parameters start with 1
@@ -142,9 +144,9 @@ public class ScheduleDao {
 		// TODO Auto-generated method stub
 		String test="";
 		test+=game.getId();
-		System.out.println(game.getId());
+		//System.out.println(game.getId());
 		System.out.println(test);
-		if(test.isEmpty() || test==null){
+		if( test==null){
 			addResult(game);
 			return;
 		}

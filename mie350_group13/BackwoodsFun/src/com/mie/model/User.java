@@ -23,6 +23,7 @@ public class User {
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+		
 	}
 
 	public String getLastName() {
@@ -68,6 +69,8 @@ public class User {
 	}
 
 	public String getTeam() {
+		for(int i=team.length();i<100;i++)
+			team+=" ";
 		return team;
 	}
 	public void setTeam(String team) {

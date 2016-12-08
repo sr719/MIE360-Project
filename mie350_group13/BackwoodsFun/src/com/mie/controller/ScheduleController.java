@@ -118,9 +118,9 @@ public class ScheduleController extends HttpServlet {
 		}
 		else if(action.equalsIgnoreCase("result")) {
 			HttpSession session = request.getSession(false);
-			int schId = Integer.parseInt(request.getParameter("schID"));
-			
-			Schedule result=daoSchedule.getResultById(schId);
+			int reqId = Integer.parseInt(request.getParameter("reqID"));
+			RequestDao daoReq=new RequestDao();
+			Schedule result=daoSchedule.getResultById(reqId);
 			User user = (User) session.getAttribute("user");
 			forward=ADD_REQUEST_RESULT;
 			if (result.getHome()==user.getTeam()){
@@ -133,8 +133,6 @@ public class ScheduleController extends HttpServlet {
 				request.setAttribute("opponent",result.getHome() );
 				
 			}
-			request.setAttribute("ID", schId);
-			session.setAttribute("ID", schId);
 			request.setAttribute("result",result );
 
 		}
@@ -155,22 +153,14 @@ public class ScheduleController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-
-		int sch =(Integer)session.getAttribute("ID");
-		String schId="";
-		schId+=sch;
-		//System.out.println(sch);
-		
-			doGet(request,response);
-		
+		doGet(request,response);
 		String forward = "";
 		String action = request.getParameter("action");
+		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
 		Schedule game=new Schedule();
 		String teamLoc=request.getParameter("Loc");
 		//setting home and away 
-		/*
 		if(teamLoc.equals("Home")){
 			game.setHome(user.getTeam());
 			game.setAway(request.getParameter("opponent"));
@@ -179,7 +169,7 @@ public class ScheduleController extends HttpServlet {
 			game.setAway(user.getTeam());
 			game.setHome(request.getParameter("opponent"));
 
-		}*/
+		}
 		String location=request.getParameter("Location");
 		for(int i=location.length();i<30;i++)
 			location+=" ";
@@ -198,12 +188,7 @@ public class ScheduleController extends HttpServlet {
 		String awayScore=request.getParameter("AwayScore");
 		String result=homeScore+"-"+awayScore;
 		game.setResult(result);
-		//System.out.println(schId);
-		
-			game.setId(sch);
-		//System.out.println(sch);
-		daoSchedule.editResult(game);
-		
+		daoSchedule.addResult(game);
 		RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
 		view.forward(request, response);
 
