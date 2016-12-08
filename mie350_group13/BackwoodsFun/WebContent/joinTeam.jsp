@@ -23,7 +23,7 @@
   <c:forEach items="${teams}" var="i">
 
 					<tr>
-						<td><c:out value="${i.getName()}" /></td>
+						<td name="team"><c:out value="${i.getName()}" /></td>
 						<td><c:out value="${i.getNumPlayers()}" /></td>
 						<td align='center'><form> <input class = "join" type=submit value="Join"></form></td>
 					</tr>

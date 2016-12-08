@@ -40,6 +40,8 @@ public class TeamController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
+		if(action==null)
+			action="";
 
 		if (action.equalsIgnoreCase("listTeam")) {
 			forward = LIST_TEAM;
@@ -68,7 +70,7 @@ public class TeamController extends HttpServlet {
 			
 			request.setAttribute("teams", daoTeam.getAllTeams());
 		}else {
-			//forward = INSERT_OR_EDIT;
+			forward = HOMEPAGE;
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
